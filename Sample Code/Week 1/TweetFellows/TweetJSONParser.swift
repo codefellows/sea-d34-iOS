@@ -20,12 +20,16 @@ class TweetJSONParser {
         
         if let text = object["text"] as? String {
           //println(text)
-          let tweet = Tweet(text: text)
-          tweets.append(tweet)
+          
+          if let userInfo = object["user"] as? [String : AnyObject] {
+            if let username = userInfo["name"] as? String {
+              let tweet = Tweet(text: text, username: username)
+              tweets.append(tweet)
+            }
+          }
         }
       }
     }
     return tweets
   }
-  
 }
