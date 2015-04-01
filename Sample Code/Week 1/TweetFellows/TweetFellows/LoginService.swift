@@ -27,6 +27,9 @@ class LoginService {
         }
         
       } else {
+        if error != nil {
+          println(error.code)
+        }
       completionHandler(nil,"Please sign in to your twitter account")
       }
     }

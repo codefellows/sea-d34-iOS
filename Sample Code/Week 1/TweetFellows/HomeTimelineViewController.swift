@@ -8,10 +8,11 @@
 
 import UIKit
 
-class HomeTimelineViewController: UIViewController, UITableViewDataSource {
+class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
   @IBOutlet weak var tableView: UITableView!
   
+  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   var myLabel : UILabel!
   
  
@@ -25,13 +26,21 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
       
+      self.navigationController
+      self.activityIndicator.startAnimating()
+      self.tableView.userInteractionEnabled = false
+      self.tableView.estimatedRowHeight = 70
+      self.tableView.rowHeight = UITableViewAutomaticDimension
       self.tableView.dataSource = self
+      self.tableView.delegate = self
       self.tableView.alpha = 0
+  self.navigationController?.hidesBarsOnSwipe = true
       
       UIView.animateWithDuration(2.0, animations: { () -> Void in
         self.tableView.alpha = 1
       })
       
+     
       LoginService.requestTwitterAccount { (twitterAccount, errorDescription) -> Void in
         println("got the account!")
         if twitterAccount != nil {
@@ -43,6 +52,9 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource {
             if tweets != nil {
               self.tweets = tweets
               self.tableView.reloadData()
+              self.activityIndicator.stopAnimating()
+              self.activityIndicator.hidden = true
+              self.tableView.userInteractionEnabled = true
             }
           })
           
@@ -55,6 +67,7 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource {
 //        
 //        if let data = NSData(contentsOfFile: filePath) {
 //          self.tweets = TweetJSONParser.tweetsFromJSONData(data)
+//          self.tableView.reloadData()
 //          //println(tweets.count)
 //        }
 //      }
@@ -81,5 +94,15 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource {
     return cell
   }
 
+  //MARK:
+  //MARK: UITableViewDelegate
+  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    let viewController = UIViewController()
+    viewController.view.backgroundColor = UIColor.whiteColor()
+    self.navigationController?.pushViewController(viewController, animated: true)
+  }
 
+  @IBAction func cameraButtonPressed(sender: AnyObject) {
+  }
 }
