@@ -15,8 +15,8 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   var myLabel : UILabel!
   
- 
-  let twitterService = TwitterService()
+  let imageService = ImageService()
+  //let twitterService = TwitterService()
   //rule 1, given a default value inline
   var name = "Brad"
   //rule 2, marked as an optional
@@ -28,6 +28,9 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
       
       self.navigationController
       self.activityIndicator.startAnimating()
+      
+      let nib = UINib(nibName: "TweetTableViewCell", bundle: NSBundle.mainBundle())
+      self.tableView.registerNib(nib, forCellReuseIdentifier: "TweetCell")
       self.tableView.userInteractionEnabled = false
       self.tableView.estimatedRowHeight = 70
       self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -44,8 +47,8 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
       LoginService.requestTwitterAccount { (twitterAccount, errorDescription) -> Void in
         println("got the account!")
         if twitterAccount != nil {
-          self.twitterService.twitterAccount = twitterAccount
-          self.twitterService.fetchHomeTimeline({ (tweets, errorDescription) -> Void in
+          TwitterService.sharedService.twitterAccount = twitterAccount
+          TwitterService.sharedService.fetchHomeTimeline({ (tweets, errorDescription) -> Void in
             if errorDescription != nil {
               //handle an error
             }
@@ -86,11 +89,31 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
     let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as TweetTableViewCell
+    cell.tag++
+    let tag = cell.tag
     cell.textLabel?.text = nil //set this to nil because the table view is reusing the cells
+    cell.profileImageView.image = nil
     if let tweet = self.tweets?[indexPath.row] {
       cell.tweetTextLabel.text = tweet.text
       cell.usernameLabel.text = tweet.username
+      cell.profileImageView.image = tweet.profileImage
+      
+      if let image = tweet.profileImage {
+        cell.profileImageView.image = image
+      } else {
+        
+        self.imageService.fetchProfileImage(tweet.profileImageURL, completionHandler: { [weak self] (image) -> () in
+          if self != nil {
+          tweet.profileImage = image
+          if tag == cell.tag {
+          cell.profileImageView.image = tweet.profileImage
+          }
+          }
+        })
+        
+      }
     }
+    cell.layoutIfNeeded()
     return cell
   }
 
@@ -98,8 +121,11 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
   //MARK: UITableViewDelegate
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    let viewController = UIViewController()
-    viewController.view.backgroundColor = UIColor.whiteColor()
+    let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("TweetInfoVC") as TweetInfoViewController
+    let selectedTweet = self.tweets![indexPath.row]
+    viewController.selectedTweet = selectedTweet
+    //viewController.twitterService = self.twitterService
+    
     self.navigationController?.pushViewController(viewController, animated: true)
   }
 

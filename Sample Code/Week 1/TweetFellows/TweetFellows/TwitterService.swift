@@ -12,20 +12,28 @@ import Accounts
 
 class TwitterService {
   
+  class var sharedService : TwitterService {
+    struct Static {
+      static let instance : TwitterService = TwitterService()
+    }
+    return Static.instance
+  }
+  
   var twitterAccount : ACAccount?
   let homeTimelineURL = "https://api.twitter.com/1.1/statuses/home_timeline.json"
+  let tweetInfoURL = "https://api.twitter.com/1.1/statuses/show.json?id="
   
   init() {
     //left blank
   }
   
-  func fetchHomeTimeline(completionHandler : ([Tweet]?,String?) -> Void){
+  func fetchHomeTimeline(completionHandler : ([Tweet]?,String?)-> ()){
     
     let requestURL  = NSURL(string: homeTimelineURL)
     let twitterRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: requestURL, parameters: nil)
     twitterRequest.account = twitterAccount
     
-    twitterRequest.performRequestWithHandler { (data, response, error) -> Void in
+    twitterRequest.performRequestWithHandler { (data, response, error) in
       if error != nil {
         //handle error here
       } else {
@@ -45,6 +53,24 @@ class TwitterService {
           completionHandler(tweets,errorDescription)
         })
        
+      }
+    }
+    
+  }
+  
+  func fetchInfoForTweet(id : String, completionHandler : (String?) -> Void) {
+    
+    let tweetInfoURL = self.tweetInfoURL + id
+    let requestURL  = NSURL(string: tweetInfoURL)
+    let twitterRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: requestURL, parameters: nil)
+    twitterRequest.account = twitterAccount
+    
+    twitterRequest.performRequestWithHandler { (data, response, error) -> Void in
+      if response.statusCode == 200 {
+        let info = TweetJSONParser.tweetInfoFromJSON(data)
+        NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+          completionHandler(info)
+        })
       }
     }
     
