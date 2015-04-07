@@ -14,7 +14,7 @@
 		A2029A341AD3205B00DC3CC4 /* ImageFiltersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2029A331AD3205B00DC3CC4 /* ImageFiltersTests.swift */; };
 		A2029A3E1AD320B400DC3CC4 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2029A3D1AD320B400DC3CC4 /* PhotoViewController.swift */; };
 		A2029A401AD32FD200DC3CC4 /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2029A3F1AD32FD200DC3CC4 /* FilterService.swift */; };
-		A22EA0101AD48DED0013B0A8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22EA00F1AD48DED0013B0A8 /* Constants.swift */; };
+		A22EA0121AD493AD0013B0A8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22EA0111AD493AD0013B0A8 /* Constants.swift */; };
 		A2D155761AD4725A0049671F /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D155751AD4725A0049671F /* ImageResizer.swift */; };
 		A2D155801AD475F80049671F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2D1557A1AD475F80049671F /* Bolts.framework */; };
 		A2D155811AD475F80049671F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2D1557B1AD475F80049671F /* Parse.framework */; };
@@ -60,7 +60,7 @@
 		A2029A331AD3205B00DC3CC4 /* ImageFiltersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFiltersTests.swift; sourceTree = "<group>"; };
 		A2029A3D1AD320B400DC3CC4 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoViewController.swift; path = ../PhotoViewController.swift; sourceTree = "<group>"; };
 		A2029A3F1AD32FD200DC3CC4 /* FilterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterService.swift; sourceTree = "<group>"; };
-		A22EA00F1AD48DED0013B0A8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A22EA0111AD493AD0013B0A8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
 		A2D155751AD4725A0049671F /* ImageResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
 		A2D155771AD4751D0049671F /* ImageFilters-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImageFilters-Bridging-Header.h"; sourceTree = "<group>"; };
 		A2D1557A1AD475F80049671F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../../parse-library-1-3/Bolts.framework"; sourceTree = "<group>"; };
@@ -146,7 +146,7 @@
 				A2029A1D1AD3205A00DC3CC4 /* AppDelegate.swift */,
 				A2029A3D1AD320B400DC3CC4 /* PhotoViewController.swift */,
 				A2D155A11AD489210049671F /* TimelineViewController.swift */,
-				A22EA00F1AD48DED0013B0A8 /* Constants.swift */,
+				A22EA0111AD493AD0013B0A8 /* Constants.swift */,
 				A2D1559F1AD484DD0049671F /* ParseService.swift */,
 				A2029A3F1AD32FD200DC3CC4 /* FilterService.swift */,
 				A2029A211AD3205A00DC3CC4 /* Main.storyboard */,
@@ -313,7 +313,7 @@
 				A2029A401AD32FD200DC3CC4 /* FilterService.swift in Sources */,
 				A2029A1E1AD3205A00DC3CC4 /* AppDelegate.swift in Sources */,
 				A2029A3E1AD320B400DC3CC4 /* PhotoViewController.swift in Sources */,
-				A22EA0101AD48DED0013B0A8 /* Constants.swift in Sources */,
+				A22EA0121AD493AD0013B0A8 /* Constants.swift in Sources */,
 				A2D155A01AD484DD0049671F /* ParseService.swift in Sources */,
 				A2D155A21AD489210049671F /* TimelineViewController.swift in Sources */,
 			);
