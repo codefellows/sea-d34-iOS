@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E36200BB-D81D-4AA0-9657-4AE9C1E65BFB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ImageFilters</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>24030F9DCD347170E4D0C779DF11007E061AE5F5</key>
+		<string>https://github.com/codefellows/sea-d34-iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Sample Code/Week 2/ImageFilters/ImageFilters.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>24030F9DCD347170E4D0C779DF11007E061AE5F5</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/codefellows/sea-d34-iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>24030F9DCD347170E4D0C779DF11007E061AE5F5</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>24030F9DCD347170E4D0C779DF11007E061AE5F5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>sea-d34-iOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>

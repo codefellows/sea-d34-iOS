@@ -14,7 +14,7 @@ class FilterService {
   class func sepia(originalImage : UIImage) -> UIImage {
     
     let image = CIImage(image: originalImage)
-    let sepia = CIFilter(name: "CIPixellate")
+    let sepia = CIFilter(name: "CISepiaTone")
     sepia.setDefaults()
     //sepia.setValue(1.0, forKey: kCIInputIntensityKey)
     sepia.setValue(image, forKey: kCIInputImageKey)
@@ -23,15 +23,7 @@ class FilterService {
     for input in sepia.inputKeys() {
       println(input)
     }
-    
-    if "Bradf" == "Brad" {
-      
-      var brad = "Brad"
-      
-      
-      
-    }
-    
+
     let options = [kCIContextWorkingColorSpace : NSNull()]
     let eaglContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
     let context = CIContext(EAGLContext: eaglContext, options: options)

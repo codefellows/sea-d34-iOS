@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C106a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C106a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yWo-XY-zLb">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Photo View Controller-->
+        <!--Upload-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="PhotoViewController" customModule="ImageFilters" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Upload" id="BYZ-38-t0r" customClass="PhotoViewController" customModule="ImageFilters" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDF-jx-0b6">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDF-jx-0b6">
                                 <rect key="frame" x="280" y="562" width="41" height="30"/>
                                 <state key="normal" title="Photo">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -26,8 +26,8 @@
                                     <action selector="photoButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xzn-et-rHu"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="hUO-hi-OmF">
-                                <rect key="frame" x="60" y="60" width="480" height="480"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="hUO-hi-OmF">
+                                <rect key="frame" x="60" y="90" width="480" height="420"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -35,17 +35,57 @@
                             <constraint firstAttribute="centerY" secondItem="hUO-hi-OmF" secondAttribute="centerY" id="7vW-X6-m6M"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vDF-jx-0b6" secondAttribute="bottom" constant="8" id="W9v-8s-Dcv"/>
                             <constraint firstItem="hUO-hi-OmF" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="jr6-zx-DWy"/>
-                            <constraint firstItem="hUO-hi-OmF" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="oC7-Le-VtR"/>
+                            <constraint firstItem="hUO-hi-OmF" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.7" id="oC7-Le-VtR"/>
                             <constraint firstAttribute="centerX" secondItem="vDF-jx-0b6" secondAttribute="centerX" id="pdj-AJ-Na1"/>
                             <constraint firstAttribute="centerX" secondItem="hUO-hi-OmF" secondAttribute="centerX" id="s6l-5d-37i"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="a8d-fU-sy4"/>
                     <connections>
                         <outlet property="primaryImageView" destination="hUO-hi-OmF" id="0pS-ne-JkF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1187" y="242"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="Rbr-9Q-8jw">
+            <objects>
+                <viewController id="Sqn-oC-ZeI" customClass="TimelineViewController" customModule="ImageFilters" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YUn-mb-Fs3"/>
+                        <viewControllerLayoutGuide type="bottom" id="sT2-Zq-3Na"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5zu-cP-po3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="8tD-A2-cKc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dTR-Ha-pOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1187" y="910"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ZxX-Im-d7w">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="yWo-XY-zLb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="NYB-wW-OXk">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="c6q-ek-FXO"/>
+                        <segue destination="Sqn-oC-ZeI" kind="relationship" relationship="viewControllers" id="xcI-Lt-TkQ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iRs-Mc-0Lr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="375" y="242"/>
         </scene>
     </scenes>
     <resources>

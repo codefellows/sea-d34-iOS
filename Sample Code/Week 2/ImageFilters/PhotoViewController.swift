@@ -11,15 +11,13 @@ import UIKit
 class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
    let alertController = UIAlertController(title: "Options", message: "Choose One", preferredStyle: UIAlertControllerStyle.ActionSheet)
+  
+  let imageToUploadSize = CGSize(width: 400, height: 400)
 
   @IBOutlet weak var primaryImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-      
-      var x = 100
-      
-      
+      self.title = "Upload"
       
       if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
         let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default) { (action) -> Void in
@@ -40,6 +38,14 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
         self.primaryImageView.image = sepiaImage
       }
       self.alertController.addAction(sepiaAction)
+      
+      let uploadAction = UIAlertAction(title: "Upload", style: UIAlertActionStyle.Default) { (action) -> Void in
+        
+        ParseService.uploadImage(self.primaryImageView.image!, size: self.imageToUploadSize, completionHandler: { (errorDescription) -> Void in
+          
+        })
+      }
+      self.alertController.addAction(uploadAction)
 
         // Do any additional setup after loading the view.
     }
