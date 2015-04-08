@@ -20,24 +20,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Parse.setApplicationId(kApplicationID,
       clientKey: kClientKey)
     
-//    let testObject = PFObject(className: "Pizza")
-//    testObject["toppings"] = "Mushrooms"
-//    
-//    testObject.saveInBackgroundWithBlock { (finished, error) -> Void in
-//      println("upload complete")
-//    }
+    let testObject = PFObject(className: "Pizza")
+    testObject["toppings"] = "Mushrooms"
+//
+    testObject.saveInBackgroundWithBlock { (finished, error) -> Void in
+      println("upload complete")
+    }
 //    println("upload started")
     
-//    let query = PFQuery(className: "Pizza")
-//    query.whereKey("toppings", containsString: "Mushrooms")
-//    query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
-//      if error != nil {
-//        println(error.localizedDescription)
-//      } else {
-//        
-//        println(results.count)
-//      }
-//    }
+    let query = PFQuery(className: "Pizza")
+    query.whereKey("toppings", containsString: "Mushrooms")
+    query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
+      if error != nil {
+        println(error.localizedDescription)
+      } else {
+        
+        println(results.count)
+      }
+    }
     
     return true
   }
