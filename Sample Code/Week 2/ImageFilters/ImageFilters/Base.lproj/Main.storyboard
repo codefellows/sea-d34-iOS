@@ -90,11 +90,75 @@
                         <outlet property="imageViewTrailingConstraint" destination="1dJ-7t-vfo" id="3GD-F0-cfV"/>
                         <outlet property="photoButton" destination="vDF-jx-0b6" id="mnz-BA-8oY"/>
                         <outlet property="primaryImageView" destination="hUO-hi-OmF" id="0pS-ne-JkF"/>
+                        <segue destination="Unt-4F-Yqw" kind="show" identifier="ShowGallery" id="zMN-iT-6th"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1838" y="467"/>
+            <point key="canvasLocation" x="1878" y="456"/>
+        </scene>
+        <!--Gallery View Controller-->
+        <scene sceneID="BBs-Qg-cTR">
+            <objects>
+                <viewController id="Unt-4F-Yqw" customClass="GalleryViewController" customModule="ImageFilters" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zOk-aE-vNk"/>
+                        <viewControllerLayoutGuide type="bottom" id="lLH-Jg-yr0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WPr-Ar-tHM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wgy-Fg-C09">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yyu-bb-Mrj">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GalleryCell" id="ywx-HY-g7T" customClass="GalleryCell" customModule="ImageFilters" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S49-av-Pq1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="S49-av-Pq1" firstAttribute="top" secondItem="ywx-HY-g7T" secondAttribute="topMargin" constant="-8" id="1M5-fb-Td3"/>
+                                            <constraint firstItem="S49-av-Pq1" firstAttribute="leading" secondItem="ywx-HY-g7T" secondAttribute="leadingMargin" constant="-8" id="6v2-WH-ncF"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="S49-av-Pq1" secondAttribute="trailing" constant="-8" id="IrG-dC-16v"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="S49-av-Pq1" secondAttribute="bottom" constant="-8" id="YE6-hH-eoL"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="S49-av-Pq1" id="edU-2E-15r"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Wgy-Fg-C09" firstAttribute="top" secondItem="WPr-Ar-tHM" secondAttribute="topMargin" id="3Cv-i1-zjc"/>
+                            <constraint firstItem="Wgy-Fg-C09" firstAttribute="leading" secondItem="WPr-Ar-tHM" secondAttribute="leadingMargin" constant="-16" id="aCP-Aj-wDz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Wgy-Fg-C09" secondAttribute="trailing" constant="-16" id="eWn-GS-MfU"/>
+                            <constraint firstItem="lLH-Jg-yr0" firstAttribute="top" secondItem="Wgy-Fg-C09" secondAttribute="bottom" id="oXT-bI-fVv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Wgy-Fg-C09" id="dUk-mR-hRU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G4O-1f-yur" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2601" y="456"/>
         </scene>
         <!--Timeline View Controller-->
         <scene sceneID="Rbr-9Q-8jw">
@@ -113,7 +177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dTR-Ha-pOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1999" y="910"/>
+            <point key="canvasLocation" x="1976" y="1119"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ZxX-Im-d7w">

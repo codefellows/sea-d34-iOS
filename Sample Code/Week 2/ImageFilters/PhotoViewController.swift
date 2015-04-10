@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Social
 
-class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource {
+class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, ImageSelectedDelegate {
   
    let alertController = UIAlertController(title: "Options", message: "Choose One", preferredStyle: UIAlertControllerStyle.ActionSheet)
   
@@ -56,6 +57,11 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
         super.viewDidLoad()
       self.title = "Upload"
       
+      if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "sharePressed")
+      }
+      
+      
       let options = [kCIContextWorkingColorSpace : NSNull()]
       let eaglContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
       self.context = CIContext(EAGLContext: eaglContext, options: options)
@@ -98,10 +104,15 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
       self.alertController.addAction(uploadAction)
       
       let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
-        
+      
         
       }
       self.alertController.addAction(cancelAction)
+      
+      let galleryAction = UIAlertAction(title: "Gallery", style: UIAlertActionStyle.Default) { (action) -> Void in
+         self.performSegueWithIdentifier("ShowGallery", sender: self)
+      }
+      self.alertController.addAction(galleryAction)
 
       self.currentImage = UIImage(named: "photo.jpg")
         // Do any additional setup after loading the view.
@@ -182,6 +193,28 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
     cell.imageView.image = filter(self.originalThumbnail,self.context)
   
     return cell
+  }
+  
+  //MARK: ImageSelectedDelegate
+  
+  func controllerDidSelectImage(image: UIImage) {
+    self.currentImage = image
+  }
+  
+  //MARK: PrepareForSegue
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "ShowGallery" {
+      let galleryVC = segue.destinationViewController as GalleryViewController
+      galleryVC.primaryImageViewSize = self.primaryImageView.frame.size
+      galleryVC.delegate = self
+      
+    }
+  }
+  
+  func sharePressed() {
+    let composeVC = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+    composeVC.addImage(self.currentImage)
+    self.presentViewController(composeVC, animated: true, completion: nil)
   }
 
 }
