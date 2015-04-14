@@ -11,6 +11,8 @@ import Foundation
 
 class GithubService {
   
+  static let sharedInstance : GithubService = GithubService()
+  
   let githubSearchRepoURL = "https://api.github.com/search/repositories"
   
   let localURL = "http://127.0.0.1:3000"
@@ -18,9 +20,13 @@ class GithubService {
   func fetchReposForSearch(searchTerm : String, completionHandler : ( [Repository]?, String?) ->(Void)) {
     
     let queryString = "?q=\(searchTerm)"
-    let requestURL = localURL + queryString
+    let requestURL = githubSearchRepoURL + queryString
     let url = NSURL(string: requestURL)
-    let request = NSURLRequest(URL: url!)
+    let request = NSMutableURLRequest(URL: url!)
+    
+    if let token = NSUserDefaults.standardUserDefaults().objectForKey("githubToken") as? String {
+      request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
+    }
     
     let dataTask = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
       

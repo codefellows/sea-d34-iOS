@@ -17,6 +17,9 @@
 		A27161C11ADC6BC300588028 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27161C01ADC6BC300588028 /* Repository.swift */; };
 		A27161C31ADC6E8F00588028 /* RepoSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27161C21ADC6E8F00588028 /* RepoSearchViewController.swift */; };
 		A27161C51ADC70AC00588028 /* RepoJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27161C41ADC70AC00588028 /* RepoJSONParser.swift */; };
+		A27161F81ADDB00B00588028 /* GithubKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27161F71ADDB00B00588028 /* GithubKeys.swift */; };
+		A27161FA1ADDB08100588028 /* OAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27161F91ADDB08100588028 /* OAuthService.swift */; };
+		A27161FC1ADDB09500588028 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27161FB1ADDB09500588028 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		A27161C01ADC6BC300588028 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		A27161C21ADC6E8F00588028 /* RepoSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoSearchViewController.swift; sourceTree = "<group>"; };
 		A27161C41ADC70AC00588028 /* RepoJSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepoJSONParser.swift; path = ../RepoJSONParser.swift; sourceTree = "<group>"; };
+		A27161F71ADDB00B00588028 /* GithubKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GithubKeys.swift; path = ../GithubKeys.swift; sourceTree = "<group>"; };
+		A27161F91ADDB08100588028 /* OAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OAuthService.swift; path = ../OAuthService.swift; sourceTree = "<group>"; };
+		A27161FB1ADDB09500588028 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +130,7 @@
 		A27161BD1ADC5C5300588028 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A27161FB1ADDB09500588028 /* LoginViewController.swift */,
 				A27161C21ADC6E8F00588028 /* RepoSearchViewController.swift */,
 				A27161BB1ADC5C4A00588028 /* MainMenuTableViewController.swift */,
 				A27161BE1ADC6B8100588028 /* GithubService.swift */,
@@ -134,8 +141,10 @@
 		A27161C61ADC70BE00588028 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A27161F71ADDB00B00588028 /* GithubKeys.swift */,
 				A27161C41ADC70AC00588028 /* RepoJSONParser.swift */,
 				A27161C01ADC6BC300588028 /* Repository.swift */,
+				A27161F91ADDB08100588028 /* OAuthService.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -240,12 +249,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A27161FC1ADDB09500588028 /* LoginViewController.swift in Sources */,
 				A27161C51ADC70AC00588028 /* RepoJSONParser.swift in Sources */,
 				A27161C31ADC6E8F00588028 /* RepoSearchViewController.swift in Sources */,
 				A27161BC1ADC5C4A00588028 /* MainMenuTableViewController.swift in Sources */,
+				A27161F81ADDB00B00588028 /* GithubKeys.swift in Sources */,
 				A271619C1ADC5AB700588028 /* AppDelegate.swift in Sources */,
 				A27161BF1ADC6B8100588028 /* GithubService.swift in Sources */,
 				A27161C11ADC6BC300588028 /* Repository.swift in Sources */,
+				A27161FA1ADDB08100588028 /* OAuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +455,7 @@
 				A27161B71ADC5AB700588028 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A27161B81ADC5AB700588028 /* Build configuration list for PBXNativeTarget "GithubToGoTests" */ = {
 			isa = XCConfigurationList;
@@ -451,6 +464,7 @@
 				A27161BA1ADC5AB700588028 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

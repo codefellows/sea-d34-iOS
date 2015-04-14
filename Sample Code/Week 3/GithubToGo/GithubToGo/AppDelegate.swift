@@ -12,11 +12,33 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
+  let oauthService = OAuthService()
+  
 
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
     // Override point for customization after application launch.
+    
+    if let token = NSUserDefaults.standardUserDefaults().objectForKey("githubToken") as? String {
+      
+      if let
+        currentRootVC = self.window?.rootViewController as? LoginViewController,
+        storyboard = currentRootVC.storyboard {
+          
+          let navController = storyboard.instantiateViewControllerWithIdentifier("MainMenuNav") as! UINavigationController
+          window?.rootViewController = navController
+      }
+      
+      //if we have a token, change root VC to main menu
+      
+    }
+    return true
+  }
+  
+  func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+    println(url)
+    self.oauthService.handleRedirect(url)
     return true
   }
 
