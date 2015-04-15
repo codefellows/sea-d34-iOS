@@ -29,10 +29,7 @@ class OAuthService {
     let parameters = "\(code!)&client_id=\(kGithubClientID)&client_secret=\(kGithubSecret)"
     
       let data = parameters.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)
-    
-    
-    
-  let request = NSMutableURLRequest(URL: NSURL(string: url)!)
+    let request = NSMutableURLRequest(URL: NSURL(string: url)!)
     request.HTTPMethod = "POST"
     request.HTTPBody = data
     

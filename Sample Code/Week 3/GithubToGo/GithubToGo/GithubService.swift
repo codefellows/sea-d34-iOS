@@ -45,4 +45,37 @@ class GithubService {
     })
     dataTask.resume()
   }
+  
+  func fetchUsersForSearch(search : String, completionHandler : ([User]?, String?) -> (Void)) {
+    
+    let searchURL = "https://api.github.com/search/users?q="
+    let url = searchURL + search
+    let request = NSMutableURLRequest(URL: NSURL(string: url)!)
+    
+    if let token = NSUserDefaults.standardUserDefaults().objectForKey("githubToken") as? String {
+      request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
+    }
+    
+    let dataTask = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+      
+      let users = UserJSONParser.usersFromJSONData(data)
+      
+      NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+        println("hi")
+        completionHandler(users,nil)
+      })
+      
+//      NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//        
+//        completionHandler(users, nil)
+//      })
+    })
+    dataTask.resume()
+    
+    
+    
+    
+    
+    
+  }
 }
