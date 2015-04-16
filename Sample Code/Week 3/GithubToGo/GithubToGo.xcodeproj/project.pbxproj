@@ -15,6 +15,9 @@
 		A23FDAC41ADF17D300D7352D /* ImageFetchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23FDAC31ADF17D300D7352D /* ImageFetchService.swift */; };
 		A23FDAC61ADF1DD700D7352D /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23FDAC51ADF1DD700D7352D /* UserDetailViewController.swift */; };
 		A23FDAC81ADF1E5300D7352D /* ToUserDetailAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23FDAC71ADF1E5300D7352D /* ToUserDetailAnimationController.swift */; };
+		A248F3AE1AE04E4E00BFAC0C /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A248F3AD1AE04E4E00BFAC0C /* ImageResizer.swift */; };
+		A248F3B01AE054CB00BFAC0C /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A248F3AF1AE054CB00BFAC0C /* WebViewController.swift */; };
+		A26D481D1AE0614B006ADE93 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26D481C1AE0614B006ADE93 /* StringExtension.swift */; };
 		A271619C1ADC5AB700588028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A271619B1ADC5AB700588028 /* AppDelegate.swift */; };
 		A27161A11ADC5AB700588028 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A271619F1ADC5AB700588028 /* Main.storyboard */; };
 		A27161A31ADC5AB700588028 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A27161A21ADC5AB700588028 /* Images.xcassets */; };
@@ -49,6 +52,9 @@
 		A23FDAC31ADF17D300D7352D /* ImageFetchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFetchService.swift; sourceTree = "<group>"; };
 		A23FDAC51ADF1DD700D7352D /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDetailViewController.swift; path = ../UserDetailViewController.swift; sourceTree = "<group>"; };
 		A23FDAC71ADF1E5300D7352D /* ToUserDetailAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToUserDetailAnimationController.swift; sourceTree = "<group>"; };
+		A248F3AD1AE04E4E00BFAC0C /* ImageResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
+		A248F3AF1AE054CB00BFAC0C /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		A26D481C1AE0614B006ADE93 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		A27161961ADC5AB700588028 /* GithubToGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubToGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A271619A1ADC5AB700588028 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A271619B1ADC5AB700588028 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +102,14 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		A26D481E1AE06235006ADE93 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A26D481C1AE0614B006ADE93 /* StringExtension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		A271618D1ADC5AB700588028 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +131,7 @@
 		A27161981ADC5AB700588028 /* GithubToGo */ = {
 			isa = PBXGroup;
 			children = (
+				A26D481E1AE06235006ADE93 /* Extensions */,
 				A271619B1ADC5AB700588028 /* AppDelegate.swift */,
 				A27161C61ADC70BE00588028 /* Models */,
 				A27161BD1ADC5C5300588028 /* Controllers */,
@@ -161,6 +176,7 @@
 				A23FDAC71ADF1E5300D7352D /* ToUserDetailAnimationController.swift */,
 				A27161C21ADC6E8F00588028 /* RepoSearchViewController.swift */,
 				A27161BB1ADC5C4A00588028 /* MainMenuTableViewController.swift */,
+				A248F3AF1AE054CB00BFAC0C /* WebViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -168,6 +184,7 @@
 		A27161C61ADC70BE00588028 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A248F3AD1AE04E4E00BFAC0C /* ImageResizer.swift */,
 				A27161F71ADDB00B00588028 /* GithubKeys.swift */,
 				A27161C41ADC70AC00588028 /* RepoJSONParser.swift */,
 				A27161C01ADC6BC300588028 /* Repository.swift */,
@@ -283,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A27161FC1ADDB09500588028 /* LoginViewController.swift in Sources */,
+				A248F3B01AE054CB00BFAC0C /* WebViewController.swift in Sources */,
 				A27161C51ADC70AC00588028 /* RepoJSONParser.swift in Sources */,
 				A27161C31ADC6E8F00588028 /* RepoSearchViewController.swift in Sources */,
 				A27161BC1ADC5C4A00588028 /* MainMenuTableViewController.swift in Sources */,
@@ -293,9 +311,11 @@
 				A23FDAC41ADF17D300D7352D /* ImageFetchService.swift in Sources */,
 				A23FDAC81ADF1E5300D7352D /* ToUserDetailAnimationController.swift in Sources */,
 				A27161C11ADC6BC300588028 /* Repository.swift in Sources */,
+				A248F3AE1AE04E4E00BFAC0C /* ImageResizer.swift in Sources */,
 				A23FDAC01ADF136D00D7352D /* User.swift in Sources */,
 				A23FDAC61ADF1DD700D7352D /* UserDetailViewController.swift in Sources */,
 				A27161FA1ADDB08100588028 /* OAuthService.swift in Sources */,
+				A26D481D1AE0614B006ADE93 /* StringExtension.swift in Sources */,
 				A23FDABD1ADF12DC00D7352D /* UserCell.swift in Sources */,
 				A23FDABB1ADF124800D7352D /* UserSearchViewController.swift in Sources */,
 			);

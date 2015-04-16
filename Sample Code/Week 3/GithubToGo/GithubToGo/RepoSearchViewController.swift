@@ -53,6 +53,19 @@ class RepoSearchViewController: UIViewController, UITableViewDataSource, UISearc
     
   }
   
+  func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    return text.validForURL()
+  }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "ShowWeb" {
+      let destination = segue.destinationViewController as! WebViewController
+      let indexPath = self.tableView.indexPathForSelectedRow()
+      let repo = self.results[indexPath!.row]
+      destination.selectedRepo = repo
+    }
+  }
+  
   
 
 }
