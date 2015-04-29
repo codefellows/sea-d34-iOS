@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "AppDelegate.h"
+#import "AddRegionViewController.h"
 
 const double kSeattleLat = 34;
 const double kSeattleLong = 4324;
@@ -28,7 +29,9 @@ const double kSeattleLong = 4324;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  SEATT_LAT;
+  
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(regionAdded:) name:@"RegionAdded" object:nil];
+  
   self.mapView.mapType = MKMapTypeSatellite;
   self.locationManager = [[CLLocationManager alloc] init];
   self.locationManager.delegate = self;
@@ -107,10 +110,18 @@ const double kSeattleLong = 4324;
 //  
 //}
 
+
 -(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
   NSLog(@"pressed!");
   
   CLLocationCoordinate2D coordinate = [view.annotation coordinate];
+  
+  AddRegionViewController *addRegionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AddRegionVC"];
+  addRegionVC.coordinate = coordinate;
+  addRegionVC.locationManager = self.locationManager;
+  [self presentViewController:addRegionVC animated:true completion:nil];
+  
+  
 
 }
                                              
@@ -125,7 +136,16 @@ const double kSeattleLong = 4324;
   CLLocation *firstLocation = locations.firstObject;
   NSLog(@"%f, %f", firstLocation.coordinate.latitude, firstLocation.coordinate.longitude);
 }
-                                             
+
+
+-(void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
+  NSLog(@"entered Region!");
+  UILocalNotification *notification = [[UILocalNotification alloc] init];
+  //[notification setRegion:region];
+  notification.alertTitle = @"hey you are here!";
+  notification.alertAction = @"region launch";
+  [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+}
 
 
 - (void)didReceiveMemoryWarning {
@@ -138,6 +158,32 @@ const double kSeattleLong = 4324;
   
   [self.mapView setCenterCoordinate:seattleCoordinate animated:true];
 
+}
+
+-(void)regionAdded:(NSNotification *)notification {
+  NSLog(@"region added from home!");
+  NSDictionary *userInfo = notification.userInfo;
+  CLCircularRegion *region = userInfo[@"region"];
+  
+  MKCircle *circle = [MKCircle circleWithCenterCoordinate:region.center radius:region.radius];
+  [self.mapView addOverlay:circle];
+}
+
+-(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
+  
+  MKCircleRenderer *circleRenderer = [[MKCircleRenderer alloc] initWithOverlay:overlay];
+  
+  circleRenderer.fillColor = [UIColor blueColor];
+  circleRenderer.alpha = 0.5;
+  circleRenderer.strokeColor = [UIColor purpleColor];
+  
+
+      return circleRenderer;
+  
+}
+
+-(void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

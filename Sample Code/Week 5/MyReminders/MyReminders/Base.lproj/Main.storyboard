@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -48,6 +48,52 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Add Region View Controller-->
+        <scene sceneID="qek-Ti-tmG">
+            <objects>
+                <viewController storyboardIdentifier="AddRegionVC" id="fbe-6K-jFS" customClass="AddRegionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nvK-FG-SJq"/>
+                        <viewControllerLayoutGuide type="bottom" id="5Wq-KL-UZm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UaN-p2-Jo8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXP-0s-aDN">
+                                <rect key="frame" x="260" y="562" width="81" height="30"/>
+                                <state key="normal" title="Add Region">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addRegionPressed:" destination="fbe-6K-jFS" eventType="touchUpInside" id="A2C-wM-kRw"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Region Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dKe-Kq-vIy">
+                                <rect key="frame" x="246" y="28" width="109" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="fbe-6K-jFS" id="Zqf-du-1bl"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5Wq-KL-UZm" firstAttribute="top" secondItem="qXP-0s-aDN" secondAttribute="bottom" constant="8" id="Fwx-8e-uCu"/>
+                            <constraint firstAttribute="centerX" secondItem="qXP-0s-aDN" secondAttribute="centerX" id="JwA-zN-ihH"/>
+                            <constraint firstItem="dKe-Kq-vIy" firstAttribute="top" secondItem="nvK-FG-SJq" secondAttribute="bottom" constant="8" id="pAG-QM-LXQ"/>
+                            <constraint firstAttribute="centerX" secondItem="dKe-Kq-vIy" secondAttribute="centerX" id="ryN-ou-vl8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textField" destination="dKe-Kq-vIy" id="NJ5-c8-LBr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hhT-Bu-FYo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="933" y="229"/>
         </scene>
     </scenes>
 </document>

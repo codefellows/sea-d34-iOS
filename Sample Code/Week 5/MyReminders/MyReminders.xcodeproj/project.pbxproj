@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A26330B81AF174BE000D7D7D /* AddRegionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A26330B71AF174BE000D7D7D /* AddRegionViewController.m */; };
 		A2F7E99C1AEEEED900FFC0C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F7E99B1AEEEED900FFC0C8 /* main.m */; };
 		A2F7E99F1AEEEED900FFC0C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F7E99E1AEEEED900FFC0C8 /* AppDelegate.m */; };
 		A2F7E9A21AEEEED900FFC0C8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F7E9A11AEEEED900FFC0C8 /* ViewController.m */; };
@@ -28,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A26330B61AF174BE000D7D7D /* AddRegionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRegionViewController.h; sourceTree = "<group>"; };
+		A26330B71AF174BE000D7D7D /* AddRegionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRegionViewController.m; sourceTree = "<group>"; };
 		A2F7E9961AEEEED900FFC0C8 /* MyReminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyReminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2F7E99A1AEEEED900FFC0C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2F7E99B1AEEEED900FFC0C8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -89,6 +92,8 @@
 				A2F7E99E1AEEEED900FFC0C8 /* AppDelegate.m */,
 				A2F7E9A01AEEEED900FFC0C8 /* ViewController.h */,
 				A2F7E9A11AEEEED900FFC0C8 /* ViewController.m */,
+				A26330B61AF174BE000D7D7D /* AddRegionViewController.h */,
+				A26330B71AF174BE000D7D7D /* AddRegionViewController.m */,
 				A2F7E9A31AEEEED900FFC0C8 /* Main.storyboard */,
 				A2F7E9A61AEEEED900FFC0C8 /* Images.xcassets */,
 				A2F7E9A81AEEEED900FFC0C8 /* LaunchScreen.xib */,
@@ -228,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A26330B81AF174BE000D7D7D /* AddRegionViewController.m in Sources */,
 				A2F7E9A21AEEEED900FFC0C8 /* ViewController.m in Sources */,
 				A2F7E99F1AEEEED900FFC0C8 /* AppDelegate.m in Sources */,
 				A2F7E99C1AEEEED900FFC0C8 /* main.m in Sources */,
@@ -425,6 +431,7 @@
 				A2F7E9BB1AEEEEDA00FFC0C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A2F7E9BC1AEEEEDA00FFC0C8 /* Build configuration list for PBXNativeTarget "MyRemindersTests" */ = {
 			isa = XCConfigurationList;
@@ -433,6 +440,7 @@
 				A2F7E9BE1AEEEEDA00FFC0C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
