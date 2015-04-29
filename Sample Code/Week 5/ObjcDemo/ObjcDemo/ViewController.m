@@ -45,14 +45,43 @@
   
   name = @"hello";
   
-  int number = 31;
+  //int number = 31;
   NSString *anotherName = name;
 
-  NSLog(@"%p, %p", &name, anotherName);
+  //NSLog(@"%p, %p", &name, anotherName);
+  
+  
+   __block int number = 31;
+  
+  
+  __weak ViewController *weakSelf = self;
+  
+  
+  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+    NSLog(@"%d",number);
+    [weakSelf doSomething];
+    
+  }];
+  
+  number = 12;
   
   //[self doSomethingWithString:@"Brad" andThenChangeView:self.view];
   
   // Do any additional setup after loading the view, typically from a nib.
+  
+  
+//  [[NSURLSession sharedSession] dataTaskWithRequest:nil completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//    
+//  }];
+  
+  [UIView animateWithDuration:0.3 animations:^{
+    
+  }];
+}
+
+-(void)dosomethingWithCompletionHandler: (NSString* (^)(NSString *,NSData *))completion {
+  NSString *results = completion(@"Brad",nil);
+  
 }
 
 -(void)doSomething {
