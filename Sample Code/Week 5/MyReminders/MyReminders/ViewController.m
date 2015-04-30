@@ -47,6 +47,9 @@ const double kSeattleLong = 4324;
     
   }
   
+  
+  NSString *myName = @"Brad";
+  [myName hash];
   UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
   
   [self.mapView addGestureRecognizer:longPress];
