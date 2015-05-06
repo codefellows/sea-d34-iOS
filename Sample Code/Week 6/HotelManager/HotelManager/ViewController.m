@@ -44,6 +44,11 @@
 }
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
+  NSCalendar *calendar = [NSCalendar currentCalendar];
+  
+  [calendar dateWithEra:1 year:1 month:1 day:1 hour:1 minute:1 second:1 nanosecond:1];
+  
   // Do any additional setup after loading the view, typically from a nib.
 }
 

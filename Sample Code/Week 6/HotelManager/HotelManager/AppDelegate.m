@@ -11,6 +11,7 @@
 #import "Hotel.h"
 #import "HotelListViewController.h"
 #import "Room.h"
+#import "FromDateViewController.h"
 
 @interface AppDelegate ()
 
@@ -25,23 +26,15 @@
   [self.window makeKeyAndVisible];
   
   HotelListViewController *hotelVC = [[HotelListViewController alloc] init];
-  self.window.rootViewController = hotelVC;
+  FromDateViewController *fromDateVC = [[FromDateViewController alloc] init];
+  UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:fromDateVC];
+  self.window.rootViewController = navController;
  
+  [self seedDataBaseIfNeeded];
   
-  NSFetchRequest *hotelFetch = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
-  NSError *fetchError;
-
-  
-  NSArray * results = [self.managedObjectContext executeFetchRequest:hotelFetch error:&fetchError];
-  if (fetchError) {
-    NSLog(@"%@",fetchError.localizedDescription);
-  } else {
-    NSLog(@"%lu",(unsigned long)results.count);
-  }
-  
-  Hotel *hotel = (Hotel*)results.firstObject;
-  NSLog(@"%lu",(unsigned long)hotel.rooms.count);
-  
+//  Hotel *hotel = (Hotel*)results.firstObject;
+//  NSLog(@"%lu",(unsigned long)hotel.rooms.count);
+//  
 //  Hotel *hotel = [NSEntityDescription insertNewObjectForEntityForName:@"Hotel" inManagedObjectContext:self.managedObjectContext];
 //  hotel.name = @"Okay Motel";
 //  hotel.location = @"Lynnwood";
@@ -61,6 +54,46 @@
 //  }
   
     return YES;
+}
+
+-(void)seedDataBaseIfNeeded {
+  
+  NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Hotel"];
+  NSError *fetchError;
+  
+  NSInteger results = [self.managedObjectContext countForFetchRequest:fetchRequest error:&fetchError];
+  NSLog(@" %ld", (long)results);
+  if (results == 0) {
+    NSURL *seedURL = [[NSBundle mainBundle] URLForResource:@"seed" withExtension:@"json"];
+    NSData *seedData = [[NSData alloc] initWithContentsOfURL:seedURL];
+    NSError *jsonError;
+    NSDictionary *rootDictionary = [NSJSONSerialization JSONObjectWithData:seedData options:0 error:&jsonError];
+    if (!jsonError) {
+      NSArray *jsonArray = rootDictionary[@"Hotels"];
+      
+      for (NSDictionary *hotelDictionary in jsonArray) {
+        Hotel *hotel = [NSEntityDescription insertNewObjectForEntityForName:@"Hotel" inManagedObjectContext:self.managedObjectContext];
+        hotel.name = hotelDictionary[@"name"];
+        hotel.location = hotelDictionary[@"location"];
+        
+        NSArray *roomsArray = hotelDictionary[@"rooms"];
+        for (NSDictionary *roomDictionary in roomsArray) {
+          Room *room = [NSEntityDescription insertNewObjectForEntityForName:@"Room" inManagedObjectContext:self.managedObjectContext];
+          room.number = roomDictionary[@"number"];
+          room.rate = roomDictionary[@"rate"];
+          room.hotel = hotel;
+        }
+      }
+      
+      NSError *saveError;
+      [self.managedObjectContext save:&saveError];
+      
+      if (saveError) {
+        NSLog(@"%@",saveError.localizedDescription);
+      }
+    }
+  }
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

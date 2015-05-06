@@ -15,9 +15,17 @@
 		A2B460A81AF80A0F00E57B02 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2B460A71AF80A0F00E57B02 /* Images.xcassets */; };
 		A2B460AB1AF80A0F00E57B02 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2B460A91AF80A0F00E57B02 /* LaunchScreen.xib */; };
 		A2B460B71AF80A0F00E57B02 /* HotelManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A2B460B61AF80A0F00E57B02 /* HotelManagerTests.m */; };
-		A2B460C41AF81EDD00E57B02 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = A2B460C11AF81EDD00E57B02 /* Room.m */; };
-		A2B460C51AF81EDD00E57B02 /* Hotel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2B460C31AF81EDD00E57B02 /* Hotel.m */; };
 		A2B460C81AF824F800E57B02 /* HotelListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2B460C71AF824F800E57B02 /* HotelListViewController.m */; };
+		A2EF4A481AF95A0B00BDCAAD /* seed.json in Resources */ = {isa = PBXBuildFile; fileRef = A2EF4A471AF95A0B00BDCAAD /* seed.json */; };
+		A2EF4A511AF9614F00BDCAAD /* FromDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EF4A501AF9614F00BDCAAD /* FromDateViewController.m */; };
+		A2EF4A571AF971FC00BDCAAD /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EF4A561AF971FC00BDCAAD /* DatePickerViewController.m */; };
+		A2EF4A5A1AF9737D00BDCAAD /* ToDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EF4A591AF9737D00BDCAAD /* ToDateViewController.m */; };
+		A2EF4A5D1AF9743E00BDCAAD /* AvailabilityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EF4A5C1AF9743E00BDCAAD /* AvailabilityTableViewController.m */; };
+		A2EF4A631AF9761300BDCAAD /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EF4A621AF9761300BDCAAD /* Room.m */; };
+		A2EF4A661AF9761400BDCAAD /* Guest.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EF4A651AF9761400BDCAAD /* Guest.m */; };
+		A2EF4A691AF9761400BDCAAD /* Hotel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EF4A681AF9761400BDCAAD /* Hotel.m */; };
+		A2EF4A6B1AF9762F00BDCAAD /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2EF4A6A1AF9762F00BDCAAD /* CoreData.framework */; };
+		A2EF4A711AF976AC00BDCAAD /* Reservation.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EF4A701AF976AC00BDCAAD /* Reservation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,12 +53,26 @@
 		A2B460B01AF80A0F00E57B02 /* HotelManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HotelManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2B460B51AF80A0F00E57B02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2B460B61AF80A0F00E57B02 /* HotelManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotelManagerTests.m; sourceTree = "<group>"; };
-		A2B460C01AF81EDD00E57B02 /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
-		A2B460C11AF81EDD00E57B02 /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
-		A2B460C21AF81EDD00E57B02 /* Hotel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hotel.h; sourceTree = "<group>"; };
-		A2B460C31AF81EDD00E57B02 /* Hotel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hotel.m; sourceTree = "<group>"; };
 		A2B460C61AF824F800E57B02 /* HotelListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HotelListViewController.h; path = ../HotelListViewController.h; sourceTree = "<group>"; };
 		A2B460C71AF824F800E57B02 /* HotelListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotelListViewController.m; path = ../HotelListViewController.m; sourceTree = "<group>"; };
+		A2EF4A471AF95A0B00BDCAAD /* seed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = seed.json; sourceTree = "<group>"; };
+		A2EF4A4F1AF9614F00BDCAAD /* FromDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FromDateViewController.h; sourceTree = "<group>"; };
+		A2EF4A501AF9614F00BDCAAD /* FromDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FromDateViewController.m; sourceTree = "<group>"; };
+		A2EF4A551AF971FC00BDCAAD /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
+		A2EF4A561AF971FC00BDCAAD /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
+		A2EF4A581AF9737D00BDCAAD /* ToDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDateViewController.h; sourceTree = "<group>"; };
+		A2EF4A591AF9737D00BDCAAD /* ToDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDateViewController.m; sourceTree = "<group>"; };
+		A2EF4A5B1AF9743E00BDCAAD /* AvailabilityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailabilityTableViewController.h; sourceTree = "<group>"; };
+		A2EF4A5C1AF9743E00BDCAAD /* AvailabilityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailabilityTableViewController.m; sourceTree = "<group>"; };
+		A2EF4A611AF9761300BDCAAD /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Room.h; path = ../Room.h; sourceTree = "<group>"; };
+		A2EF4A621AF9761300BDCAAD /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Room.m; path = ../Room.m; sourceTree = "<group>"; };
+		A2EF4A641AF9761400BDCAAD /* Guest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Guest.h; path = ../Guest.h; sourceTree = "<group>"; };
+		A2EF4A651AF9761400BDCAAD /* Guest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Guest.m; path = ../Guest.m; sourceTree = "<group>"; };
+		A2EF4A671AF9761400BDCAAD /* Hotel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hotel.h; path = ../Hotel.h; sourceTree = "<group>"; };
+		A2EF4A681AF9761400BDCAAD /* Hotel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Hotel.m; path = ../Hotel.m; sourceTree = "<group>"; };
+		A2EF4A6A1AF9762F00BDCAAD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A2EF4A6F1AF976AC00BDCAAD /* Reservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reservation.h; sourceTree = "<group>"; };
+		A2EF4A701AF976AC00BDCAAD /* Reservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reservation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2EF4A6B1AF9762F00BDCAAD /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +97,7 @@
 		A2B4608B1AF80A0E00E57B02 = {
 			isa = PBXGroup;
 			children = (
+				A2EF4A6A1AF9762F00BDCAAD /* CoreData.framework */,
 				A2B460961AF80A0E00E57B02 /* HotelManager */,
 				A2B460B31AF80A0F00E57B02 /* HotelManagerTests */,
 				A2B460951AF80A0E00E57B02 /* Products */,
@@ -92,16 +116,11 @@
 		A2B460961AF80A0E00E57B02 /* HotelManager */ = {
 			isa = PBXGroup;
 			children = (
-				A2B460C01AF81EDD00E57B02 /* Room.h */,
-				A2B460C61AF824F800E57B02 /* HotelListViewController.h */,
-				A2B460C71AF824F800E57B02 /* HotelListViewController.m */,
-				A2B460C11AF81EDD00E57B02 /* Room.m */,
-				A2B460C21AF81EDD00E57B02 /* Hotel.h */,
-				A2B460C31AF81EDD00E57B02 /* Hotel.m */,
+				A2EF4A471AF95A0B00BDCAAD /* seed.json */,
+				A2EF4A721AF9773C00BDCAAD /* Model */,
+				A2EF4A731AF9774700BDCAAD /* Controllers */,
 				A2B4609B1AF80A0E00E57B02 /* AppDelegate.h */,
 				A2B4609C1AF80A0F00E57B02 /* AppDelegate.m */,
-				A2B460A11AF80A0F00E57B02 /* ViewController.h */,
-				A2B460A21AF80A0F00E57B02 /* ViewController.m */,
 				A2B460A41AF80A0F00E57B02 /* Main.storyboard */,
 				A2B460A71AF80A0F00E57B02 /* Images.xcassets */,
 				A2B460A91AF80A0F00E57B02 /* LaunchScreen.xib */,
@@ -135,6 +154,40 @@
 				A2B460B51AF80A0F00E57B02 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A2EF4A721AF9773C00BDCAAD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A2EF4A671AF9761400BDCAAD /* Hotel.h */,
+				A2EF4A681AF9761400BDCAAD /* Hotel.m */,
+				A2EF4A641AF9761400BDCAAD /* Guest.h */,
+				A2EF4A651AF9761400BDCAAD /* Guest.m */,
+				A2EF4A611AF9761300BDCAAD /* Room.h */,
+				A2EF4A621AF9761300BDCAAD /* Room.m */,
+				A2EF4A6F1AF976AC00BDCAAD /* Reservation.h */,
+				A2EF4A701AF976AC00BDCAAD /* Reservation.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A2EF4A731AF9774700BDCAAD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A2B460A11AF80A0F00E57B02 /* ViewController.h */,
+				A2B460A21AF80A0F00E57B02 /* ViewController.m */,
+				A2EF4A581AF9737D00BDCAAD /* ToDateViewController.h */,
+				A2EF4A591AF9737D00BDCAAD /* ToDateViewController.m */,
+				A2EF4A551AF971FC00BDCAAD /* DatePickerViewController.h */,
+				A2EF4A561AF971FC00BDCAAD /* DatePickerViewController.m */,
+				A2EF4A5B1AF9743E00BDCAAD /* AvailabilityTableViewController.h */,
+				A2EF4A5C1AF9743E00BDCAAD /* AvailabilityTableViewController.m */,
+				A2EF4A4F1AF9614F00BDCAAD /* FromDateViewController.h */,
+				A2EF4A501AF9614F00BDCAAD /* FromDateViewController.m */,
+				A2B460C61AF824F800E57B02 /* HotelListViewController.h */,
+				A2B460C71AF824F800E57B02 /* HotelListViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +272,7 @@
 			files = (
 				A2B460A61AF80A0F00E57B02 /* Main.storyboard in Resources */,
 				A2B460AB1AF80A0F00E57B02 /* LaunchScreen.xib in Resources */,
+				A2EF4A481AF95A0B00BDCAAD /* seed.json in Resources */,
 				A2B460A81AF80A0F00E57B02 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,13 +291,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2B460C51AF81EDD00E57B02 /* Hotel.m in Sources */,
-				A2B460C41AF81EDD00E57B02 /* Room.m in Sources */,
+				A2EF4A631AF9761300BDCAAD /* Room.m in Sources */,
 				A2B460C81AF824F800E57B02 /* HotelListViewController.m in Sources */,
+				A2EF4A661AF9761400BDCAAD /* Guest.m in Sources */,
+				A2EF4A691AF9761400BDCAAD /* Hotel.m in Sources */,
+				A2EF4A5A1AF9737D00BDCAAD /* ToDateViewController.m in Sources */,
 				A2B4609D1AF80A0F00E57B02 /* AppDelegate.m in Sources */,
 				A2B460A01AF80A0F00E57B02 /* HotelManager.xcdatamodeld in Sources */,
 				A2B460A31AF80A0F00E57B02 /* ViewController.m in Sources */,
+				A2EF4A511AF9614F00BDCAAD /* FromDateViewController.m in Sources */,
+				A2EF4A5D1AF9743E00BDCAAD /* AvailabilityTableViewController.m in Sources */,
+				A2EF4A571AF971FC00BDCAAD /* DatePickerViewController.m in Sources */,
 				A2B4609A1AF80A0E00E57B02 /* main.m in Sources */,
+				A2EF4A711AF976AC00BDCAAD /* Reservation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +500,7 @@
 				A2B460BC1AF80A0F00E57B02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A2B460BD1AF80A0F00E57B02 /* Build configuration list for PBXNativeTarget "HotelManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -448,6 +509,7 @@
 				A2B460BF1AF80A0F00E57B02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
