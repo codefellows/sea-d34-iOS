@@ -12,8 +12,12 @@
 #import "HotelListViewController.h"
 #import "Room.h"
 #import "FromDateViewController.h"
+#import "CoreDataStack.h"
+#import "ReservationListViewController.h"
 
 @interface AppDelegate ()
+
+@property (readwrite,strong,nonatomic) HotelService *hotelService;
 
 @end
 
@@ -25,10 +29,15 @@
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   [self.window makeKeyAndVisible];
   
+  CoreDataStack *coreDataStack = [[CoreDataStack alloc] init];
+  self.hotelService = [[HotelService alloc] initWithCoreDataStack:coreDataStack];
+  
+  
   HotelListViewController *hotelVC = [[HotelListViewController alloc] init];
   FromDateViewController *fromDateVC = [[FromDateViewController alloc] init];
   UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:fromDateVC];
-  self.window.rootViewController = navController;
+  ReservationListViewController *reservationListVC = [[ReservationListViewController alloc] init];
+  self.window.rootViewController = reservationListVC;
  
   [self seedDataBaseIfNeeded];
   

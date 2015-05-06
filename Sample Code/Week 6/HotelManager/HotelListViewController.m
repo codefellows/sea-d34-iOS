@@ -36,15 +36,11 @@
     [super viewDidLoad];
   
   AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-  NSManagedObjectContext *context = appDelegate.managedObjectContext;
+  HotelService *hotelService = appDelegate.hotelService;
   
-  NSFetchRequest *hotelFetch = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
-  NSError *fetchError;
-  self.hotels = [context executeFetchRequest:hotelFetch error:&fetchError];
-  if (fetchError) {
-    NSLog(@"%@",fetchError.localizedDescription);
-  }
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"HotelCell"];
+  self.hotels = [hotelService fetchAllHotels];
+  
+      [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"HotelCell"];
   self.tableView.dataSource = self;
     // Do any additional setup after loading the view.
 }

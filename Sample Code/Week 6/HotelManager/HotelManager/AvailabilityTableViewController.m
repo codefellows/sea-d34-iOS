@@ -26,26 +26,7 @@
   AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
   NSManagedObjectContext *context = appDelegate.managedObjectContext;
   
-  NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Reservation"];
-  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"startDate <= %@ AND endDate >= %@",self.toDate,self.fromDate];
-  request.predicate = predicate;
-  NSError *fetchError;
-  NSArray *results = [context executeFetchRequest:request error:&fetchError];
   
-  NSMutableArray *badRooms = [[NSMutableArray alloc] init];
-  for (Reservation *reservation in results) {
-    [badRooms addObject:reservation.room];
-  }
-  
-  NSFetchRequest *finalRequest = [NSFetchRequest fetchRequestWithEntityName:@"Room"];
-  NSPredicate *finalPredicate = [NSPredicate predicateWithFormat:@"NOT self IN %@", badRooms];
-  finalRequest.predicate = finalPredicate;
-  
-  NSError *finalError;
-  
-  NSArray *finalResults = [context executeFetchRequest:finalRequest error:&finalError];
-  
-  NSLog(@"%lu",(unsigned long)finalResults.count);
   
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
