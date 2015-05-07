@@ -7,6 +7,8 @@
 //
 
 #import "CoreDataStack.h"
+#import "Hotel.h"
+#import "Room.h"
 
 @interface CoreDataStack ()
 @property (nonatomic) BOOL isForTesting;
@@ -26,6 +28,70 @@
   return self;
 }
 
+- (instancetype)init {
+  self = [super init];
+  if (self) {
+        
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleWillChangeStore:) name:NSPersistentStoreCoordinatorStoresWillChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDidChangeStore:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleChangesToData:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSaveFromMainContext:) name:NSManagedObjectContextDidSaveNotification object:self.managedObjectContext];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSaveFromBackgroundContext:) name:NSManagedObjectContextDidSaveNotification object:self.backgroundContext];
+    
+    
+  }
+  return self;
+}
+
+-(void)handleSaveFromMainContext:(NSNotification *)notification {
+  [self.backgroundContext performBlock:^{
+    [self.backgroundContext mergeChangesFromContextDidSaveNotification:notification];
+  }];
+}
+
+-(void)handleSaveFromBackgroundContext:(NSNotification *)notification {
+  [self.managedObjectContext performBlock:^{
+    [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+  }];
+}
+
+  
+
+-(void)handleWillChangeStore:(NSNotification *)notification {
+  NSLog(@"will change store");
+  
+  [self.managedObjectContext performBlock:^{
+    
+    if ([self.managedObjectContext hasChanges]) {
+      NSError *saveError;
+      [self.managedObjectContext save:&saveError];
+      if (saveError) {
+        NSLog(@"%@",saveError);
+      }
+    }
+    
+    [self.managedObjectContext reset];
+    
+  } ];
+}
+
+-(void)handleDidChangeStore:(NSNotification *)notification {
+  NSLog(@"did change store");
+}
+
+-(void)handleChangesToData:(NSNotification *)notification {
+  NSLog(@"new data");
+  
+  [self.managedObjectContext performBlock:^{
+    [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DataChanged" object:nil];
+    
+  }];
+}
+
 - (NSURL *)applicationDocumentsDirectory {
   // The directory the application uses to store the Core Data store file. This code uses a directory named "BPJ.HotelManager" in the application's documents directory.
   return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
@@ -38,6 +104,7 @@
   }
   NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"HotelManager" withExtension:@"momd"];
   _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+  
   return _managedObjectModel;
 }
 
@@ -59,7 +126,11 @@
   } else {
     storeType = NSSQLiteStoreType;
   }
-  if (![_persistentStoreCoordinator addPersistentStoreWithType:storeType configuration:nil URL:storeURL options:nil error:&error]) {
+  
+  NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption : @true, NSInferMappingModelAutomaticallyOption : @true,NSPersistentStoreUbiquitousContentNameKey : @"HoteliCloud", NSPersistentStoreUbiquitousContentURLKey : [self cloudDirectory]};
+  
+  
+  if (![_persistentStoreCoordinator addPersistentStoreWithType:storeType configuration:nil URL:storeURL options:options error:&error]) {
     // Report any error we got.
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[NSLocalizedDescriptionKey] = @"Failed to initialize the application's saved data";
@@ -86,8 +157,12 @@
   if (!coordinator) {
     return nil;
   }
-  _managedObjectContext = [[NSManagedObjectContext alloc] init];
+  _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
   [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+  self.backgroundContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+  self.backgroundContext.persistentStoreCoordinator = coordinator;
+  
+  
   return _managedObjectContext;
 }
 
@@ -104,6 +179,54 @@
       abort();
     }
   }
+}
+
+-(NSURL *)cloudDirectory
+{
+  NSFileManager *fileManager=[NSFileManager defaultManager];
+  NSURL *cloudRootURL=[fileManager URLForUbiquityContainerIdentifier:nil];
+  NSLog (@"cloudRootURL=%@",cloudRootURL);
+  return cloudRootURL;
+}
+
+-(void)seedDataBaseIfNeeded {
+  
+  NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Hotel"];
+  NSError *fetchError;
+  
+  NSInteger results = [self.managedObjectContext countForFetchRequest:fetchRequest error:&fetchError];
+  NSLog(@" %ld", (long)results);
+  if (results == 0) {
+    NSURL *seedURL = [[NSBundle mainBundle] URLForResource:@"seed" withExtension:@"json"];
+    NSData *seedData = [[NSData alloc] initWithContentsOfURL:seedURL];
+    NSError *jsonError;
+    NSDictionary *rootDictionary = [NSJSONSerialization JSONObjectWithData:seedData options:0 error:&jsonError];
+    if (!jsonError) {
+      NSArray *jsonArray = rootDictionary[@"Hotels"];
+      
+      for (NSDictionary *hotelDictionary in jsonArray) {
+        Hotel *hotel = [NSEntityDescription insertNewObjectForEntityForName:@"Hotel" inManagedObjectContext:self.managedObjectContext];
+        hotel.name = hotelDictionary[@"name"];
+        hotel.location = hotelDictionary[@"location"];
+        
+        NSArray *roomsArray = hotelDictionary[@"rooms"];
+        for (NSDictionary *roomDictionary in roomsArray) {
+          Room *room = [NSEntityDescription insertNewObjectForEntityForName:@"Room" inManagedObjectContext:self.managedObjectContext];
+          room.number = roomDictionary[@"number"];
+          room.rate = roomDictionary[@"rate"];
+          room.hotel = hotel;
+        }
+      }
+      
+      NSError *saveError;
+      [self.managedObjectContext save:&saveError];
+      
+      if (saveError) {
+        NSLog(@"%@",saveError.localizedDescription);
+      }
+    }
+  }
+  
 }
 
 

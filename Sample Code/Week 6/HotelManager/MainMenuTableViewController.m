@@ -1,33 +1,29 @@
 //
-//  AvailabilityTableViewController.m
+//  MainMenuTableViewController.m
 //  HotelManager
 //
-//  Created by Bradley Johnson on 5/5/15.
+//  Created by Bradley Johnson on 5/7/15.
 //  Copyright (c) 2015 BradJohnson. All rights reserved.
 //
 
-#import "AvailabilityTableViewController.h"
-#import "AppDelegate.h"
-#import "Room.h"
-#import "Reservation.h"
-#import "Guest.h"
+#import "MainMenuTableViewController.h"
+#import "HotelListViewController.h"
+#import "FromDateViewController.h"
 
-@interface AvailabilityTableViewController ()
+@interface MainMenuTableViewController ()
+
+@property (strong,nonatomic) NSArray *options;
 
 @end
 
-@implementation AvailabilityTableViewController
+@implementation MainMenuTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+  self.options = @[@"All Hotels",@"Availability"];
+  [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"OptionCell"];
   
-  //[self bookReservationForRandy];
-  
-//  AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-//  NSManagedObjectContext *context = appDelegate.managedObjectContext;
-  
-  
-  
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -35,69 +31,52 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-//-(void)bookReservationForRandy {
-//  
-//  AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-//  NSManagedObjectContext *context = appDelegate.managedObjectContext;
-//  
-//  NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Room"];
-//  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND number == %d",@"hotel.name",@"Fancy Estates",401];
-//  
-//  
-//  //  NSPredicate *longPredicate = [NSPredicate predicateWithFormat:@"hotel.name == 'Fancy Estates'"];
-//  
-//  fetchRequest.predicate = predicate;
-//  NSError *fetchError;
-//  NSArray *results = [context executeFetchRequest:fetchRequest error:&fetchError];
-//  if (fetchError) {
-//    NSLog(@"%@",fetchError.localizedDescription);
-//  }
-//  
-//  NSLog(@"%lu",(unsigned long)results.count);
-//  
-//  Room *room = results.lastObject;
-//  Reservation *reservation = [NSEntityDescription insertNewObjectForEntityForName:@"Reservation" inManagedObjectContext:context];
-//  
-//  reservation.room = room;
-//  reservation.startDate = self.fromDate;
-//  reservation.endDate = self.toDate;
-//  
-//  Guest *guest = [NSEntityDescription insertNewObjectForEntityForName:@"Guest" inManagedObjectContext:context];
-//  guest.firstName = @"Randy";
-//  guest.lastName = @"Kitt";
-//  reservation.guest = guest;
-//  
-//  NSError *saveError;
-//  
-//  if (![context save:&saveError]) {
-//    NSLog(@"%@",saveError.localizedDescription);
-//  }
-//  
-//}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//#warning Potentially incomplete method implementation.
+//    // Return the number of sections.
+//    return 0;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+  return self.options.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OptionCell" forIndexPath:indexPath];
+  NSString *option = self.options[indexPath.row];
+  cell.textLabel.text = option;
+  
     // Configure the cell...
     
     return cell;
 }
-*/
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  
+  switch (indexPath.row) {
+    case 0: {
+       HotelListViewController *hotelListVC = [[HotelListViewController alloc] init];
+      [self.navigationController pushViewController:hotelListVC animated:true];
+    }
+      break;
+    case 1: {
+      FromDateViewController *fromDateVC = [[FromDateViewController alloc] init];
+      [self.navigationController pushViewController:fromDateVC animated:true];
+    }
+    default:
+      break;
+  }
+}
+
 
 /*
 // Override to support conditional editing of the table view.

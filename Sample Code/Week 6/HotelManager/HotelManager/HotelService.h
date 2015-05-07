@@ -23,4 +23,6 @@
 
 -(Reservation *)bookReservationForRoom:(Room *)room startDate:(NSDate *)startDate endDate:(NSDate *)endDate;
 
+@property (strong,nonatomic) CoreDataStack *coreDataStack;
+
 @end

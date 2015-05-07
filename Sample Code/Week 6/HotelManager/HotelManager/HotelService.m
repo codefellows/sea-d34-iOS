@@ -11,9 +11,10 @@
 #import "Reservation.h"
 #import "Room.h"
 #import "Guest.h"
+#import "Hotel.h"
 
 @interface HotelService ()
-@property (strong,nonatomic) CoreDataStack *coreDataStack;
+
 @end
 
 @implementation HotelService
@@ -97,6 +98,24 @@
   }
   
   return reservation;
+}
+
+-(void)fetchOnBackground {
+  NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
+  NSArray *results = [self.coreDataStack.backgroundContext executeFetchRequest:fetch error:nil];
+  NSMutableArray *objectIDs = [[NSMutableArray alloc] init];
+  for (Hotel *hotel in results) {
+    [objectIDs addObject:hotel.objectID];
+  }
+
+  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+    NSMutableArray *hotels = [NSMutableArray new];
+    for (NSManagedObjectID *objectID in objectIDs) {
+      Hotel *hotel = (Hotel *)[self.coreDataStack.managedObjectContext objectWithID:objectID];
+      [hotels addObject:hotel];
+    }
+    //completionHandler(hotels);
+  }];
 }
 
 @end

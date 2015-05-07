@@ -12,6 +12,7 @@
         <relationship name="rooms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Room" inverseName="hotel" inverseEntity="Room" syncable="YES"/>
     </entity>
     <entity name="Reservation" representedClassName="Reservation" syncable="YES">
+        <attribute name="cost" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="guest" maxCount="1" deletionRule="Nullify" destinationEntity="Guest" inverseName="reservations" inverseEntity="Guest" syncable="YES"/>
@@ -28,7 +29,7 @@
     <elements>
         <element name="Guest" positionX="-1683" positionY="810" width="128" height="88"/>
         <element name="Hotel" positionX="-2205" positionY="717" width="128" height="103"/>
-        <element name="Reservation" positionX="-1863" positionY="771" width="128" height="103"/>
+        <element name="Reservation" positionX="-1881" positionY="729" width="128" height="118"/>
         <element name="Room" positionX="-2034" positionY="720" width="128" height="133"/>
     </elements>
 </model>

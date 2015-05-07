@@ -10,8 +10,9 @@
 #import <CoreData/CoreData.h>
 #import "AppDelegate.h"
 #import "Hotel.h"
+#import "CoreDataStack.h"
 
-@interface HotelListViewController () <UITableViewDataSource>
+@interface HotelListViewController () <UITableViewDataSource,UITableViewDelegate>
 
 @property (strong,nonatomic) UITableView *tableView;
 @property (strong,nonatomic) NSArray *hotels;
@@ -35,6 +36,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataChanged:) name:@"DataChanged" object:nil];
+  
   AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
   HotelService *hotelService = appDelegate.hotelService;
   
@@ -42,7 +45,17 @@
   
       [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"HotelCell"];
   self.tableView.dataSource = self;
+  self.tableView.delegate = self;
     // Do any additional setup after loading the view.
+}
+
+-(void)dataChanged:(NSNotification *)notification {
+  AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+  HotelService *hotelService = appDelegate.hotelService;
+  
+  self.hotels = [hotelService fetchAllHotels];
+  
+  [self.tableView reloadData];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -56,6 +69,25 @@
   return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+  HotelService *hotelService = appDelegate.hotelService;
+ 
+  
+  Hotel *newHotel = [NSEntityDescription insertNewObjectForEntityForName:@"Hotel" inManagedObjectContext: hotelService.coreDataStack.managedObjectContext];
+  newHotel.name = @"Four Seasons";
+  newHotel.location = @"Seattle";
+  
+  [hotelService.coreDataStack.managedObjectContext save:nil];
+  
+  
+  self.hotels = [hotelService fetchAllHotels];
+  
+  [self.tableView reloadData];
+  
+}
+
+
 -(void)addConstraintsToRootView:(UIView *)rootView withViews:(NSDictionary *)views {
   
   NSArray *tableViewVertical = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[tableView]|" options:0 metrics:nil views:views];
@@ -64,6 +96,8 @@
   [rootView addConstraints:tableViewHorizontal];
   
 }
+
+
 /*
 #pragma mark - Navigation
 
