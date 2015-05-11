@@ -1,18 +1,14 @@
 //
 //  MainMenuTableViewController.m
-//  HotelManager
+//  StackOverFlowClient
 //
-//  Created by Bradley Johnson on 5/7/15.
-//  Copyright (c) 2015 BradJohnson. All rights reserved.
+//  Created by Bradley Johnson on 5/11/15.
+//  Copyright (c) 2015 BPJ. All rights reserved.
 //
 
 #import "MainMenuTableViewController.h"
-#import "HotelListViewController.h"
-#import "FromDateViewController.h"
 
 @interface MainMenuTableViewController ()
-
-@property (strong,nonatomic) NSArray *options;
 
 @end
 
@@ -20,20 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  self.options = @[@"All Hotels",@"Availability"];
-  [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"OptionCell"];
-  
-  NSArray *stuff = @[@34,@523,@2,@5,@134];
-  
-  [stuff enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-    
-  }];
-  
-  [stuff sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-    return (obj1>obj2);
-  }];
-  
-  
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -47,6 +29,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  [self.delegate userDidSelectOption:indexPath.row];
+}
+
 #pragma mark - Table view data source
 
 //- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -54,40 +40,22 @@
 //    // Return the number of sections.
 //    return 0;
 //}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//#warning Incomplete method implementation.
+//    // Return the number of rows in the section.
+//    return 0;
+//}
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-  return self.options.count;
-}
-
-
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OptionCell" forIndexPath:indexPath];
-  NSString *option = self.options[indexPath.row];
-  cell.textLabel.text = option;
-  
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    
     // Configure the cell...
     
     return cell;
 }
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  
-  switch (indexPath.row) {
-    case 0: {
-       HotelListViewController *hotelListVC = [[HotelListViewController alloc] init];
-      [self.navigationController pushViewController:hotelListVC animated:true];
-    }
-      break;
-    case 1: {
-      FromDateViewController *fromDateVC = [[FromDateViewController alloc] init];
-      [self.navigationController pushViewController:fromDateVC animated:true];
-    }
-    default:
-      break;
-  }
-}
-
+*/
 
 /*
 // Override to support conditional editing of the table view.
