@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6127D4ADA9AA02FF54788ABB /* libPods-StackOverFlowClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F02DAFE6D2827A8B8ABA849 /* libPods-StackOverFlowClient.a */; };
 		A221C9DC1B01466900006744 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A221C9DB1B01466900006744 /* main.m */; };
 		A221C9DF1B01466900006744 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A221C9DE1B01466900006744 /* AppDelegate.m */; };
 		A221C9E51B01466900006744 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A221C9E31B01466900006744 /* Main.storyboard */; };
@@ -19,6 +20,8 @@
 		A221CA0A1B01533300006744 /* MyQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A221CA091B01533300006744 /* MyQuestionsViewController.m */; };
 		A221CA0E1B015B3800006744 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A221CA0D1B015B3800006744 /* LoginViewController.m */; };
 		A221CA111B015B5000006744 /* OAuthWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A221CA101B015B5000006744 /* OAuthWebViewController.m */; };
+		A2814FB11B02A6C200F2F5B0 /* StackOverFlowService.m in Sources */ = {isa = PBXBuildFile; fileRef = A2814FB01B02A6C200F2F5B0 /* StackOverFlowService.m */; };
+		A2FF5C8E1B02B30B007ADDE2 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = A2FF5C8D1B02B30B007ADDE2 /* Constants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F7424BDCBBE3C17DE6015E5 /* Pods-StackOverFlowClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StackOverFlowClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StackOverFlowClient/Pods-StackOverFlowClient.debug.xcconfig"; sourceTree = "<group>"; };
+		2F02DAFE6D2827A8B8ABA849 /* libPods-StackOverFlowClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StackOverFlowClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F999CDD14F81F4F403BC6E3 /* Pods-StackOverFlowClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StackOverFlowClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-StackOverFlowClient/Pods-StackOverFlowClient.release.xcconfig"; sourceTree = "<group>"; };
 		A221C9D61B01466900006744 /* StackOverFlowClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StackOverFlowClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A221C9DA1B01466900006744 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A221C9DB1B01466900006744 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -56,6 +62,10 @@
 		A221CA0D1B015B3800006744 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		A221CA0F1B015B5000006744 /* OAuthWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthWebViewController.h; sourceTree = "<group>"; };
 		A221CA101B015B5000006744 /* OAuthWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthWebViewController.m; sourceTree = "<group>"; };
+		A2814FAF1B02A6C200F2F5B0 /* StackOverFlowService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackOverFlowService.h; sourceTree = "<group>"; };
+		A2814FB01B02A6C200F2F5B0 /* StackOverFlowService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackOverFlowService.m; sourceTree = "<group>"; };
+		A2FF5C8C1B02B30B007ADDE2 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		A2FF5C8D1B02B30B007ADDE2 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6127D4ADA9AA02FF54788ABB /* libPods-StackOverFlowClient.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,12 +87,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D1CE7B040A6EC24D472E741 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0F7424BDCBBE3C17DE6015E5 /* Pods-StackOverFlowClient.debug.xcconfig */,
+				7F999CDD14F81F4F403BC6E3 /* Pods-StackOverFlowClient.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A221C9CD1B01466900006744 = {
 			isa = PBXGroup;
 			children = (
 				A221C9D81B01466900006744 /* StackOverFlowClient */,
 				A221C9F21B01466900006744 /* StackOverFlowClientTests */,
 				A221C9D71B01466900006744 /* Products */,
+				4D1CE7B040A6EC24D472E741 /* Pods */,
+				A26097AEC86540C620740F25 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +127,10 @@
 				A221CA101B015B5000006744 /* OAuthWebViewController.m */,
 				A221CA051B01483600006744 /* SearchQuestionsViewController.h */,
 				A221CA061B01483600006744 /* SearchQuestionsViewController.m */,
+				A2FF5C8C1B02B30B007ADDE2 /* Constants.h */,
+				A2FF5C8D1B02B30B007ADDE2 /* Constants.m */,
+				A2814FAF1B02A6C200F2F5B0 /* StackOverFlowService.h */,
+				A2814FB01B02A6C200F2F5B0 /* StackOverFlowService.m */,
 				A221CA021B01470100006744 /* MainMenuTableViewController.h */,
 				A221CA031B01470100006744 /* MainMenuTableViewController.m */,
 				A221CA0B1B01538D00006744 /* MenuSelectionDelegate.h */,
@@ -146,6 +172,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A26097AEC86540C620740F25 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2F02DAFE6D2827A8B8ABA849 /* libPods-StackOverFlowClient.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -153,9 +187,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A221C9F91B01466900006744 /* Build configuration list for PBXNativeTarget "StackOverFlowClient" */;
 			buildPhases = (
+				33883402BE45599450C509F8 /* Check Pods Manifest.lock */,
 				A221C9D21B01466900006744 /* Sources */,
 				A221C9D31B01466900006744 /* Frameworks */,
 				A221C9D41B01466900006744 /* Resources */,
+				9B3A88838B283AA2007EE7DD /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -241,15 +277,50 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		33883402BE45599450C509F8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9B3A88838B283AA2007EE7DD /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StackOverFlowClient/Pods-StackOverFlowClient-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A221C9D21B01466900006744 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2814FB11B02A6C200F2F5B0 /* StackOverFlowService.m in Sources */,
 				A221CA071B01483600006744 /* SearchQuestionsViewController.m in Sources */,
 				A221CA111B015B5000006744 /* OAuthWebViewController.m in Sources */,
 				A221C9DF1B01466900006744 /* AppDelegate.m in Sources */,
 				A221CA0A1B01533300006744 /* MyQuestionsViewController.m in Sources */,
+				A2FF5C8E1B02B30B007ADDE2 /* Constants.m in Sources */,
 				A221CA041B01470100006744 /* MainMenuTableViewController.m in Sources */,
 				A221CA0E1B015B3800006744 /* LoginViewController.m in Sources */,
 				A221CA011B0146AC00006744 /* BurgerContainerViewController.m in Sources */,
@@ -379,6 +450,7 @@
 		};
 		A221C9FA1B01466900006744 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F7424BDCBBE3C17DE6015E5 /* Pods-StackOverFlowClient.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = StackOverFlowClient/Info.plist;
@@ -389,6 +461,7 @@
 		};
 		A221C9FB1B01466900006744 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F999CDD14F81F4F403BC6E3 /* Pods-StackOverFlowClient.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = StackOverFlowClient/Info.plist;
@@ -450,6 +523,7 @@
 				A221C9FB1B01466900006744 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A221C9FC1B01466900006744 /* Build configuration list for PBXNativeTarget "StackOverFlowClientTests" */ = {
 			isa = XCConfigurationList;
@@ -458,6 +532,7 @@
 				A221C9FE1B01466900006744 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

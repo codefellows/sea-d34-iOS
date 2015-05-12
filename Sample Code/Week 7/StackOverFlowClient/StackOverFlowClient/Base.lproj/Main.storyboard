@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lnM-XR-0ub">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -40,7 +41,7 @@
         <!--Burger Container View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="BurgerContainerViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BurgerContainerVC" id="BYZ-38-t0r" customClass="BurgerContainerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -53,6 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="207" y="309"/>
         </scene>
         <!--Main Menu Table View Controller-->
         <scene sceneID="TrP-L1-sth">
@@ -115,7 +117,7 @@
         <!--Search Questions View Controller-->
         <scene sceneID="hNO-HX-ANg">
             <objects>
-                <viewController storyboardIdentifier="SearchQuestionsVC" id="728-CS-w4D" customClass="SearchQuestionsViewController" sceneMemberID="viewController">
+                <viewController id="728-CS-w4D" customClass="SearchQuestionsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3FJ-cP-b5E"/>
                         <viewControllerLayoutGuide type="bottom" id="Nsu-HG-Zk3"/>
@@ -123,12 +125,34 @@
                     <view key="view" contentMode="scaleToFill" id="gdh-u1-8qj">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Acf-hK-IkA">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="Orm-nY-AHF">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="0.25142978890000001" blue="0.213605288" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Nsu-HG-Zk3" firstAttribute="top" secondItem="Acf-hK-IkA" secondAttribute="bottom" id="Ar2-w8-DRW"/>
+                            <constraint firstItem="Acf-hK-IkA" firstAttribute="top" secondItem="gdh-u1-8qj" secondAttribute="topMargin" id="VhD-yi-jjO"/>
+                            <constraint firstItem="Acf-hK-IkA" firstAttribute="leading" secondItem="gdh-u1-8qj" secondAttribute="leadingMargin" constant="-16" id="b2l-1g-scz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Acf-hK-IkA" secondAttribute="trailing" constant="-16" id="jkm-OP-K6m"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="wPW-PT-8qI"/>
+                    <connections>
+                        <outlet property="searchBar" destination="Orm-nY-AHF" id="AUg-9h-dQu"/>
+                        <outlet property="tableView" destination="Acf-hK-IkA" id="e3j-He-Gtu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vYy-Ge-Bhh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1638" y="297"/>
+            <point key="canvasLocation" x="2444" y="309"/>
         </scene>
         <!--My Questions View Controller-->
         <scene sceneID="8AZ-AG-BQO">
@@ -147,6 +171,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94K-KF-Isa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1638" y="965"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MgM-EG-Ezr">
+            <objects>
+                <navigationController storyboardIdentifier="SearchQuestionsVC" automaticallyAdjustsScrollViewInsets="NO" id="khf-wy-H6T" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qOJ-9R-qlL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="728-CS-w4D" kind="relationship" relationship="rootViewController" id="T0j-eH-06N"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A5f-h0-7hT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1632" y="309"/>
         </scene>
     </scenes>
 </document>

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "BurgerContainerViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +17,32 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  
+//  dispatch_queue_t myQueue = dispatch_queue_create(NULL, NULL);
+//  
+//  dispatch_async(myQueue, ^{
+//    
+//  //image download
+//    NSLog(@"hello");
+//    
+//    dispatch_sync(myQueue, ^{
+//      // do something else
+//       NSLog(@"hello 2");
+//    });
+//    
+//  });
+  
+  NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
+  if (token) {
+    
+    NSLog(@"%@",[self.window.rootViewController class]);
+    UIStoryboard *storyboard = self.window.rootViewController.storyboard;
+    BurgerContainerViewController *burgerContainerVC = [storyboard instantiateViewControllerWithIdentifier:@"BurgerContainerVC"];
+    self.window.rootViewController = burgerContainerVC;
+    
+  }
+
+  
   // Override point for customization after application launch.
   return YES;
 }

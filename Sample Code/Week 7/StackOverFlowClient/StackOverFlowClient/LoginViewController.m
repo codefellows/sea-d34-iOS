@@ -8,17 +8,40 @@
 
 #import "LoginViewController.h"
 #import "OAuthWebViewController.h"
+#import "Constants.h"
+
+NS_ENUM(NSUInteger, Sport) {
+  Football = 32,
+  Basketball,
+  Baseball,
+};
+
 
 @interface LoginViewController ()
 
 @property (strong,nonatomic) UIDynamicAnimator *animator;
 
+
+
 @end
 
+NSString * const anotherName = @"Brad";
 @implementation LoginViewController
 
+
+-(void)changeSport:(enum Sport)newSport {
+  
+  
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+  
+  enum Sport mySport = Football;
+  enum Sport anotherSPort = Basketball;
+  
+ 
+
+  
   
   UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
   redView.backgroundColor = [UIColor redColor];
@@ -29,6 +52,14 @@
   [self.view addSubview:blueView];
   
   UIAttachmentBehavior *attachment = [[UIAttachmentBehavior alloc] initWithItem:redView attachedToItem:blueView];
+  
+  UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:[UICollectionViewFlowLayout new]];
+  
+  
+  UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)collectionView.collectionViewLayout;
+  flowLayout.itemSize = CGSizeMake(50, 50);
+  flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+  flowLayout.minimumLineSpacing = 0;
   
   attachment.length = 50;
   

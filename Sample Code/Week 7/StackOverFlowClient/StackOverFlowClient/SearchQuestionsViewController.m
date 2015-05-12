@@ -7,8 +7,11 @@
 //
 
 #import "SearchQuestionsViewController.h"
+#import "StackOverFlowService.h"
 
-@interface SearchQuestionsViewController ()
+@interface SearchQuestionsViewController () <UISearchBarDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -16,12 +19,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+  self.searchBar.delegate = self;
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+  [StackOverFlowService fetchQuestionsForSearchTerm:searchBar.text completionHandler:^(NSArray *items, NSString *error) {
+
+    dispatch_group_t group = dispatch_group_create();
+    
+    dispatch_group_async(group, dispatch_get_main_queue(), ^{
+      //download the image
+      
+      //
+    });
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+      //this code will run when the group of tasks is complete
+    });
+    
+    
+  }];
 }
 
 /*

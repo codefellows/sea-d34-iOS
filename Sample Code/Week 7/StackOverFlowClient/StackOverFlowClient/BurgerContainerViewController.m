@@ -19,7 +19,7 @@
 @property (strong,nonatomic) UITapGestureRecognizer *tapToClose;
 @property (strong,nonatomic) UIButton *burgerButton;
 @property (strong,nonatomic) MyQuestionsViewController *myQuestionsVC;
-@property (strong,nonatomic) SearchQuestionsViewController *searchQuestionsVC;
+@property (strong,nonatomic) UINavigationController *searchQuestionsVC;
 
 @end
 
@@ -39,7 +39,7 @@ NSInteger const slideRightBuffer = 250;
   [mainMenuVC didMoveToParentViewController:self];
   mainMenuVC.delegate = self;
   
-  SearchQuestionsViewController *searchQuestionsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchQuestionsVC"];
+  UINavigationController *searchQuestionsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchQuestionsVC"];
   [self addChildViewController:searchQuestionsVC];
   searchQuestionsVC.view.frame = self.view.frame;
   [self.view addSubview:searchQuestionsVC.view];
