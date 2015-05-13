@@ -19,6 +19,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
     // Override point for customization after application launch.
+//    
+//    NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:60 * 1024 * 1024 diskCapacity:200 * 1024 * 1024 diskPath:@"test.urlcache"];
+//    [NSURLCache setSharedURLCache:cache];
+//
+//    
+//    NSLog(@"%lu",(unsigned long)[[NSURLCache sharedURLCache] memoryCapacity]);
+//    
+//    
+//    [[[NSURLSession sharedSession] configuration] setURLCache:[NSURLCache sharedURLCache]];
+    
+//    let cache = NSURLCache(memoryCapacity: 200 * 1024 * 1024, diskCapacity: 500 * 1024 * 1024, diskPath: "test.urlcache")
+    
+    NSURLCache.sharedURLCache().memoryCapacity = 200 * 1024 * 1024
+    NSURLCache.sharedURLCache().diskCapacity = 500 * 1024 * 1024
+    
+//    NSURLSession.sharedSession().configuration.URLCache = cache
+//  NSURLCache.setSharedURLCache(cache)
+   //sleep(1)
+    
+   println(NSURLCache.sharedURLCache().currentDiskUsage)
+    
+
+    
     
     if let token = NSUserDefaults.standardUserDefaults().objectForKey("githubToken") as? String {
       

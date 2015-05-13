@@ -7,6 +7,7 @@
 //
 
 #import "MyQuestionsViewController.h"
+#import "AFNetworking.h"
 
 @interface MyQuestionsViewController ()
 
@@ -16,6 +17,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+  
+  NSLog(@"%lu",(unsigned long)[NSURLCache sharedURLCache].diskCapacity);
+  
+  NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://avatars.githubusercontent.com/u/325742?v=3"]];
+  
+  NSURLRequest *newRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://avatars.githubusercontent.com/u/325742?v=3"] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:100];
+  
+  
+  AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:newRequest];
+  requestOperation.responseSerializer = [AFImageResponseSerializer serializer];
+  [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSLog(@"Response: %@", responseObject);
+    NSLog(@"Response: %@",operation);
+    UIImage *image = (UIImage *)responseObject;
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+      imageView.image = image;
+      [self.view addSubview:imageView];
+    }];
+    
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    NSLog(@"Image error: %@", error);
+  }];
+  [requestOperation start];
     // Do any additional setup after loading the view.
 }
 

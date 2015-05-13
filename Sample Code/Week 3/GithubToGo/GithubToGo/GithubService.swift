@@ -9,7 +9,7 @@
 import Foundation
 
 
-class GithubService {
+class GithubService : NSObject, NSURLSessionDataDelegate {
   
   static let sharedInstance : GithubService = GithubService()
   
@@ -71,11 +71,5 @@ class GithubService {
 //      })
     })
     dataTask.resume()
-    
-    
-    
-    
-    
-    
   }
 }

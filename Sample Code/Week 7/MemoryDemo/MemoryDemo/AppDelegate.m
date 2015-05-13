@@ -1,13 +1,12 @@
 //
 //  AppDelegate.m
-//  StackOverFlowClient
+//  MemoryDemo
 //
-//  Created by Bradley Johnson on 5/11/15.
+//  Created by Bradley Johnson on 5/13/15.
 //  Copyright (c) 2015 BPJ. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "BurgerContainerViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,37 +16,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  
-  NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:100 * 1024 * 1024 diskCapacity:100 * 1024 * 1024 diskPath:nil];
-  [NSURLCache setSharedURLCache:sharedCache];
-
-  
-  
-//  dispatch_queue_t myQueue = dispatch_queue_create(NULL, NULL);
-//  
-//  dispatch_async(myQueue, ^{
-//    
-//  //image download
-//    NSLog(@"hello");
-//    
-//    dispatch_sync(myQueue, ^{
-//      // do something else
-//       NSLog(@"hello 2");
-//    });
-//    
-//  });
-  
-  NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
-  if (token) {
-    
-    NSLog(@"%@",[self.window.rootViewController class]);
-    UIStoryboard *storyboard = self.window.rootViewController.storyboard;
-    BurgerContainerViewController *burgerContainerVC = [storyboard instantiateViewControllerWithIdentifier:@"BurgerContainerVC"];
-    self.window.rootViewController = burgerContainerVC;
-    
-  }
-
-  
   // Override point for customization after application launch.
   return YES;
 }

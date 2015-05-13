@@ -13,5 +13,53 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GithubToGo/ImageFetchService.swift"
+            timestampString = "453231603.930827"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "fetchImageForURL(_:imageViewSize:completionHandler:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GithubToGo.ImageFetchService.(fetchImageForURL (GithubToGo.ImageFetchService) -&gt; (Swift.String, imageViewSize : C.CGSize, completionHandler : (Swift.Optional&lt;ObjectiveC.UIImage&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "GithubToGo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Brad/Desktop/sea-d34-iOS/Sample%20Code/Week%203/GithubToGo/GithubToGo/ImageFetchService.swift"
+                  timestampString = "453231241.035275"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "360">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GithubToGo.ImageFetchService.(fetchImageForURL (GithubToGo.ImageFetchService) -&gt; (Swift.String, imageViewSize : C.CGSize, completionHandler : (Swift.Optional&lt;ObjectiveC.UIImage&gt;) -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "GithubToGo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Brad/Desktop/sea-d34-iOS/Sample%20Code/Week%203/GithubToGo/GithubToGo/ImageFetchService.swift"
+                  timestampString = "453231241.035485"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

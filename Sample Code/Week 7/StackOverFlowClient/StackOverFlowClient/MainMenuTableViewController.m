@@ -7,6 +7,7 @@
 //
 
 #import "MainMenuTableViewController.h"
+#import "AFNetworking.h"
 
 @interface MainMenuTableViewController ()
 
@@ -16,7 +17,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+  
+  
+
+  
+  
+  
+  
+//  
+//  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//  [manager GET:@"https://avatars.githubusercontent.com/u/325742?v=3" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//    NSLog(@"JSON: %@", [responseObject class]);
+//    
+//  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//    //NSLog(@"Error: %@", error);
+//  }];
+  
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

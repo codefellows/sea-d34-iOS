@@ -20,6 +20,7 @@
 @property (strong,nonatomic) UIButton *burgerButton;
 @property (strong,nonatomic) MyQuestionsViewController *myQuestionsVC;
 @property (strong,nonatomic) UINavigationController *searchQuestionsVC;
+@property (strong,nonatomic) MainMenuTableViewController *mainMenuVC;
 
 @end
 
@@ -38,6 +39,7 @@ NSInteger const slideRightBuffer = 250;
   [self.view addSubview:mainMenuVC.view];
   [mainMenuVC didMoveToParentViewController:self];
   mainMenuVC.delegate = self;
+  self.mainMenuVC = mainMenuVC;
   
   UINavigationController *searchQuestionsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchQuestionsVC"];
   [self addChildViewController:searchQuestionsVC];
